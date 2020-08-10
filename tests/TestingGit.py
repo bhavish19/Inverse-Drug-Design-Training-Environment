@@ -1,1 +1,1 @@
-Testing yey
+print("Hello")
