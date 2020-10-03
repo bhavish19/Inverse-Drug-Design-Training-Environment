@@ -2,7 +2,13 @@ import gym
 from gym import error, spaces, utils
 from gym.utils import seeding
 from rdkit import Chem
+from rdkit.Chem import Draw
+from PIL import Image
+import time
+import random
+import csv
 from itertools import chain, combinations
+
 
 
 class MoleculeEnvironment(gym.Env):
@@ -11,25 +17,51 @@ class MoleculeEnvironment(gym.Env):
         self.currentState = Chem.MolFromSmiles('C')
         self.targetState = Chem.MolFromSmiles('cchhhh')
 
-    def step(self, nextState, zeroStep):
-        modifications = 0  # List for later
-        if(zeroStep == False):
-            self.currentState = nextState
-        reward = 10  # for now Out Of Scope
-        self.stateReward += reward  # for now Out Of Scope
 
-        atomsList = differenceBetweenMols(self, self.currentState, self.targetState)
-        validMolecules = allValidMolecules(self, atomsList)
-        modifications = modificationsToCurrentState(self,validMolecules)
-        #molecules = 0
-        #modifications = molecules + reward  # List for later
+    def step(self, nextState, zeroStep):
+
+        file = open('delaney.csv')
+        csv_reader = csv.reader(file, delimiter=",")
+        next(csv_reader, None)
+        rows = list(csv_reader)
+        for i in range(30):
+            r = random.randint(1, 120)
+            row = rows[r]
+            smiles = row[-1]
+            self.render(smiles)
+            time.sleep(0)
+
+       # m1 = Chem.MolFromSmiles("C")
+        # for i in range (0,10):
+         #   smiles = self.randomSmiles(m1)
+          #  self.render(smiles)
+        # modifications = 0  # List for later
+        # if(zeroStep == False):
+       #      self.currentState = nextState
+        reward = 10  # for now Out Of Scope
+       #  self.stateReward += reward  # for now Out Of Scope
+
+      #   atomsList = differenceBetweenMols(self, self.currentState, self.targetState)
+      #   validMolecules = allValidMolecules(self, atomsList)
+      #   modifications = modificationsToCurrentState(self,validMolecules)
+        molecules = 0
+        modifications = molecules + reward  # List for later
         return modifications
+  
 
     def reset(self):
         self.currentState = Chem.MolFromSmiles('C')
 
-    def render(self):
-        raise NotImplementedError
+
+        print("Called reset function")
+
+    def render(self, smiles):
+        mol = Chem.MolFromSmiles(smiles)
+        Draw.MolToFile(mol, "molecule.png")
+        img = Image.open('molecule.png')
+        img.show()
+        img.close()
+        #img =open('molecule.png','rb').read()
 
     def seed(self):
         raise NotImplementedError
