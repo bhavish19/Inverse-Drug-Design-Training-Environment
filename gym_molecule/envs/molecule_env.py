@@ -96,24 +96,13 @@ class MoleculeEnvironment(gym.Env):
         moleculeTemp = self.molToString(molecule)
         symbolList = []
         numberOfAtomsList = []
+        count = 0
         for i in moleculeTemp:
-            print(i)
-            count = 0
-            for j in symbolList:
-                if(i == j):
-                    numberOfAtomsList[count] += 1
-                    break
-                symbolList.append(i)
-                numberOfAtomsList.append(1)
-                count += 1
-        toReturn = []
-        print("symbolList: ")
+            symbolList.append(i)
+            count += 1
         print(symbolList)
-      #  for c in len(symbolList):
-       #     toReturn[c] = []
-        #    toReturn[c][0] = symbolList[c]
-        #   toReturn[c][1] = numberOfAtomsList[c]
-        return toReturn
+        print(count)
+        return count
 
     def differenceBetweenMols(self, currentMol, targetMol):
         current = calculateAtomnumbers(self, currentMol)
