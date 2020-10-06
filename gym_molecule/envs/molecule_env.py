@@ -15,8 +15,8 @@ class MoleculeEnvironment(gym.Env):
         super().__init__()
         self.currentState = Chem.MolFromSmiles('C')
         self.targetState = Chem.MolFromSmiles('CCCO')
-
-        self.calculateAtomnumbers(self.targetState)
+        testMol = Chem.MolFromSmiles('CCCO')
+        self.calculateAtomnumbers(testMol)
 
     def step(self, nextState, zeroStep):
         file = open('delaney.csv')
@@ -67,12 +67,13 @@ class MoleculeEnvironment(gym.Env):
             # Find Next State Here from modifications
             modifications = step(self, nextState, False)
 
-    # Adds Hydrogen atoms to Molecule
+    # Adds Hydrogen atoms to Molecule ??
     # Working
+    # No longer adds H
     def molToString(self, molecule):
         temp = ""
         moleculeWithHydrogen = Chem.AddHs(molecule)
-        for a in moleculeWithHydrogen.GetAtoms():
+        for a in molecule.GetAtoms():
             temp += a.GetSymbol()
         return temp
 
@@ -96,6 +97,7 @@ class MoleculeEnvironment(gym.Env):
         symbolList = []
         numberOfAtomsList = []
         for i in moleculeTemp:
+            print(i)
             count = 0
             for j in symbolList:
                 if(i == j):
@@ -105,12 +107,12 @@ class MoleculeEnvironment(gym.Env):
                 numberOfAtomsList.append(1)
                 count += 1
         toReturn = []
+        print("symbolList: ")
         print(symbolList)
-        for c in len(symbolList):
-            toReturn[c] = []
-            toReturn[c][0] = symbolList[c]
-            toReturn[c][1] = numberOfAtomsList[c]
-        print(toReturn)
+      #  for c in len(symbolList):
+       #     toReturn[c] = []
+        #    toReturn[c][0] = symbolList[c]
+        #   toReturn[c][1] = numberOfAtomsList[c]
         return toReturn
 
     def differenceBetweenMols(self, currentMol, targetMol):
