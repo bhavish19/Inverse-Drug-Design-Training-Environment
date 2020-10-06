@@ -76,16 +76,17 @@ class MoleculeEnvironment(gym.Env):
             temp += a.GetSymbol()
         return temp
 
-    # validMolecules needs to be in SMILES format
-
+     # validMolecules needs to be in SMILES format
+     # Cannot seem to convert temp to molecule.
+     # Parsing error.
     def modificationsToCurrentState(self, validMolecules):
         current = self.molToString(self.currentState)
         toReturn = []
         for i in validMolecules:
-            if i[1] == 1:
-                temp = current + i[0]
-                mol = Chem.MolFromSmiles(temp)
-                toReturn.append(mol)
+            # if i[1] == 1:  # Not sure what this should do?
+            temp = current + i[0]
+            mol = Chem.MolFromSmiles(temp)
+            toReturn.append(mol)
         print(toReturn)
         return toReturn
 
