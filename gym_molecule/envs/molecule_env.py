@@ -90,8 +90,8 @@ class MoleculeEnvironment(gym.Env):
             toReturn.append(mol)
         print(toReturn)
         return toReturn
-    # Not working
 
+    # Removed some code and returns correct int
     def calculateAtomnumbers(self, molecule):
         moleculeTemp = self.molToString(molecule)
         symbolList = []
