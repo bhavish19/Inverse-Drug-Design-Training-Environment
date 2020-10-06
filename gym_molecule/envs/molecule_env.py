@@ -10,16 +10,15 @@ import csv
 from itertools import chain, combinations
 
 
-
 class MoleculeEnvironment(gym.Env):
     def __init__(self):
         super().__init__()
         self.currentState = Chem.MolFromSmiles('C')
-        self.targetState = Chem.MolFromSmiles('cchhhh')
-
+        self.targetState = Chem.MolFromSmiles('CCCO')
+        molList = ['CCCO']
+        self.modificationsToCurrentState(molList)
 
     def step(self, nextState, zeroStep):
-
         file = open('delaney.csv')
         csv_reader = csv.reader(file, delimiter=",")
         next(csv_reader, None)
@@ -31,14 +30,8 @@ class MoleculeEnvironment(gym.Env):
             self.render(smiles)
             time.sleep(0)
 
-       # m1 = Chem.MolFromSmiles("C")
-        # for i in range (0,10):
-         #   smiles = self.randomSmiles(m1)
-          #  self.render(smiles)
-        # modifications = 0  # List for later
-        # if(zeroStep == False):
-       #      self.currentState = nextState
-        reward = 10  # for now Out Of Scope
+        reward = 10
+       # for now Out Of Scope
        #  self.stateReward += reward  # for now Out Of Scope
 
       #   atomsList = differenceBetweenMols(self, self.currentState, self.targetState)
@@ -47,11 +40,9 @@ class MoleculeEnvironment(gym.Env):
         molecules = 0
         modifications = molecules + reward  # List for later
         return modifications
-  
 
     def reset(self):
         self.currentState = Chem.MolFromSmiles('C')
-
 
         print("Called reset function")
 
@@ -61,7 +52,7 @@ class MoleculeEnvironment(gym.Env):
         img = Image.open('molecule.png')
         img.show()
         img.close()
-        #img =open('molecule.png','rb').read()
+        # img =open('molecule.png','rb').read()
 
     def seed(self):
         raise NotImplementedError
@@ -76,6 +67,8 @@ class MoleculeEnvironment(gym.Env):
             # Find Next State Here from modifications
             modifications = step(self, nextState, False)
 
+    # Adds Hydrogen atoms to Molecule
+    # Working
     def molToString(self, molecule):
         temp = ""
         moleculeWithHydrogen = Chem.AddHs(molecule)
@@ -83,16 +76,17 @@ class MoleculeEnvironment(gym.Env):
             temp += a.GetSymbol()
         return temp
 
+    # validMolecules needs to be in SMILES format
+
     def modificationsToCurrentState(self, validMolecules):
-        current = molToString(self, self.currentState)
+        current = self.molToString(self.currentState)
         toReturn = []
         for i in validMolecules:
-            if i[1]== 1:
+            if i[1] == 1:
                 temp = current + i[0]
                 mol = Chem.MolFromSmiles(temp)
                 toReturn.append(mol)
-            
-
+        print(toReturn)
         return toReturn
 
     def calculateAtomnumbers(self, molecule):

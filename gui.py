@@ -39,6 +39,7 @@ class GuiWindow(tk.Frame):
         if(os.path.getsize(filename) > 0):
             file = open(filename, "r")
             smiles = file.readline()
+
             self.env.render(smiles)
             self.buildNewButtonsAndText()
         else:
