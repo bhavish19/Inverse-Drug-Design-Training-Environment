@@ -15,8 +15,8 @@ class MoleculeEnvironment(gym.Env):
         super().__init__()
         self.currentState = Chem.MolFromSmiles('C')
         self.targetState = Chem.MolFromSmiles('CCCO')
-        molList = ['CCCO']
-        self.modificationsToCurrentState(molList)
+
+        self.calculateAtomnumbers(self.targetState)
 
     def step(self, nextState, zeroStep):
         file = open('delaney.csv')
@@ -89,9 +89,10 @@ class MoleculeEnvironment(gym.Env):
             toReturn.append(mol)
         print(toReturn)
         return toReturn
+    # Not working
 
     def calculateAtomnumbers(self, molecule):
-        moleculeTemp = molToString(self, molecule)
+        moleculeTemp = self.molToString(molecule)
         symbolList = []
         numberOfAtomsList = []
         for i in moleculeTemp:
@@ -104,12 +105,12 @@ class MoleculeEnvironment(gym.Env):
                 numberOfAtomsList.append(1)
                 count += 1
         toReturn = []
-
+        print(symbolList)
         for c in len(symbolList):
             toReturn[c] = []
             toReturn[c][0] = symbolList[c]
             toReturn[c][1] = numberOfAtomsList[c]
-
+        print(toReturn)
         return toReturn
 
     def differenceBetweenMols(self, currentMol, targetMol):
