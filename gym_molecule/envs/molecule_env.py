@@ -179,8 +179,7 @@ class MoleculeEnvironment(gym.Env):
         # self.stateReward += reward  # for now Out Of Scope
         #self.currentState = nextState
         self.currentState = Chem.MolFromSmiles('C')
-        self.targetState = Chem.MolFromSmiles(
-            'OCC(O)CC(O)[C@@H]1C[C@@H]2O[C@@]3(C[C@H](C)[C@@H]2O1)C[C@H](C)[C@@H]4O[C@]%10(C[C@@H]4O3)C[C@H]%11O[C@H]%12[C@H](C)[C@H]%13OC(=O)C[C@H]8CC[C@@H]9O[C@H]7[C@H]6O[C@]5(O[C@H]([C@@H]7O[C@@H]6C5)[C@H]9O8)CC[C@H]%15C/C(=C)[C@H](CC[C@H]%14C[C@@H](C)\C(=C)[C@@H](C[C@@H]%13O[C@H]%12C[C@H]%11O%10)O%14)O%15')
+        self.targetState = Chem.MolFromSmiles('OCC(O)CC(O)[C@@H]1C[C@@H]2O[C@@]3(C[C@H](C)[C@@H]2O1)C[C@H](C)[C@@H]4O[C@]%10(C[C@@H]4O3)C[C@H]%11O[C@H]%12[C@H](C)[C@H]%13OC(=O)C[C@H]8CC[C@@H]9O[C@H]7[C@H]6O[C@]5(O[C@H]([C@@H]7O[C@@H]6C5)[C@H]9O8)CC[C@H]%15C/C(=C)[C@H](CC[C@H]%14C[C@@H](C)\C(=C)[C@@H](C[C@@H]%13O[C@H]%12C[C@H]%11O%10)O%14)O%15')
         self.currentStringState = self.molToString(self.currentState)
         atomsList = self.differenceBetweenMols(
             self.currentState, self.targetState)

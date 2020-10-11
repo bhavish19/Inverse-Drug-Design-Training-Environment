@@ -1,0 +1,155 @@
+
+
+<Windowmanager>:
+    backgroundTab:
+    environmentTab:
+ 
+<backgroundTab>:
+    name : "FirstWindow"
+    buttonActionSpace:buttonActionSpace
+    buttonStartingMolecule:buttonStartingMolecule
+    input2:input2
+    FloatLayout:
+        canvas: 
+            Color:
+                rgba: rgba("#00B4AB")
+            Rectangle:
+                size: (1600,800)
+                source: "BackGroundImage.jpg"
+            Rectangle: 
+                pos: (5, 5)
+                size: (1590,680)
+                source: "backImage.jpg" 
+            Rectangle: 
+                pos: (5, 690)
+                size: (1590,105)
+                source: "headLine.jpg" 
+    
+        Label:
+            id:lblActionSpace
+            text: "Action Space : "
+            pos: (-660,230)
+            font_size :'30sp'
+
+        Label:
+            id:lblStartingMolecule
+            text: "Starting Molecule : "
+            pos: (-630,100)
+            font_size :'30sp'
+
+        Label:
+            id:lblRendering
+            text: "Rendering : "
+            pos: (-680,-30)
+            font_size :'30sp'
+    
+        Spinner:           
+            id: spinnerActionSpace 
+            #on_text: root.spinner_clicked(spinner_id.text) 
+            text: "Default"
+            values: ["Default", "Upload Action Space"]
+            size_hint: None, None
+            size: 200, 50
+            pos: (350,605)
+            background_color: rgba("#CD5C5C")
+            on_release: 	
+                self.background_color=rgba("#6495ED")
+            on_text: root.spinnerAction(self.text)
+
+        Spinner:           
+            id: spinnerStartingMolecule 
+            #on_text: root.spinner_clicked(spinner_id.text) 
+            text: "Carbon"
+            values: ["Carbon", "Random Molecule from List", "Certain Molecule"]
+            size_hint: None, None
+            size: 200, 50
+            pos: (350,475)
+            background_color: rgba("#CD5C5C")
+            on_release: 	
+                self.background_color=rgba("#6495ED") 
+            on_text: root.spinnerStartingMolecule(self.text)
+
+        Spinner:           
+            id: spinnerRendering 
+            #on_text: root.spinner_clicked(spinner_id.text) 
+            text: "No Rendering"
+            values: ["No Rendering", "2D Rendering", "3D Rendering"]
+            size_hint: None, None
+            size: 200, 50
+            pos: (350,345)
+            background_color: rgba("#CD5C5C")
+            on_release: 	
+                self.background_color=rgba("#6495ED") 
+        Button:
+            id: buttonActionSpace
+            text: "Upload File"
+            size_hint: None, None
+            size: 200, 50
+            pos: (600,605)
+            background_color: rgba("#CD5C5C")
+            opacity: 0
+            disabled: True
+            on_press:
+                root.actionSpaceFile()
+                self.background_color=rgba("#6495ED")
+
+        Button:
+            id: buttonStartingMolecule
+            text: "Upload File"
+            size_hint: None, None
+            size: 200, 50
+            pos: (600,475)
+            opacity: 0
+            disabled: True
+            background_color: rgba("#CD5C5C")
+            on_press:
+                root.startingMoleculeFile()
+                self.background_color=rgba("#6495ED")
+
+
+        Widget:
+            TextInput: 
+                id: input2
+                hint_text:'Enter Starting Molecule'
+                size_hint: (None,None)
+                pos_hint:(None,None)
+                pos: (600,475)            
+                height: 50
+                width: 245
+                font_size: 22
+                multiline: False
+                opacity: 0
+                disabled: True
+                padding_y : 12
+                #on_text: app.process()
+
+        Button:
+            id: buttonStart
+            text: "Create The Environment"
+            size_hint: None, None
+            size: 200, 50
+            pos: (1360,80)
+            background_color: rgba("#CD5C5C")
+            on_press:
+                root.startEnvironment()
+                self.background_color=rgba("#6495ED")
+
+        Button:
+            id: buttonExit
+            text: "Exit"
+            size_hint: None, None
+            size: 200, 50
+            pos: (1360,20)
+            background_color: rgba("#CD5C5C")
+            on_press:
+                root.exit()
+                self.background_color=rgba("#6495ED")
+
+<environmentTab>:
+    name : "SecondWindow"
+    FloatLayout:
+
+
+
+
+    
