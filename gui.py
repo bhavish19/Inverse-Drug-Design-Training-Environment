@@ -6,6 +6,7 @@ from tkinter import Text, filedialog, ttk, PhotoImage, Label
 import os
 import time
 import sys
+import multiprocessing
 from rdkit import Chem
 
 
@@ -69,7 +70,7 @@ class GuiWindow(tk.Frame):
         self.singleCarbon.pack_forget()
         self.randomMoleculeButton.pack_forget()
         # This function needs to loop until we determine the end...
-        self.env.step()
+        self.env.step('C',True)
         self.frame.after(2000)
         self.buildModifiedState()
 
@@ -110,7 +111,7 @@ class GuiWindow(tk.Frame):
         self.addFileButton = tk.Button(
             self.frame, text="Add File", fg="black", bg='blue', command=self.addFile)
         self.addFileButton.pack()
-        self.label.destroy()
+        #self.label.destroy()
 
     def produceModificationsList(self):
         self.T.delete("1.0", tk.END)
@@ -120,6 +121,10 @@ class GuiWindow(tk.Frame):
         os.system("open output.txt")
 
 
-root = tk.Tk(className=' TEDD')
-GuiWindow(root).pack()
-root.mainloop()
+
+
+if __name__ == '__main__':
+    root = tk.Tk(className=' TEDD')
+    GuiWindow(root).pack()
+    root.mainloop()
+    multiprocessing.freeze_support()
