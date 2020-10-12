@@ -20,11 +20,6 @@ Config.set('graphics', 'width', '1600')
 Config.set('graphics', 'height', '800') 
 
 
-class Windowmanager(ScreenManager):
-    pass
-
-class environmentTab(Screen):
-    pass
   
 class backgroundTab(Screen):
     
@@ -64,16 +59,14 @@ class backgroundTab(Screen):
         print(filename)
     
     def startEnvironment(self):
-        current.SecondWindow
+        pass
 
     def exit(self):
         exit()
 
-kv = Builder.load_file("background.kv")
-
 class background(App):  
     def build(self):
-        return Windowmanager()
+        return backgroundTab()
     
     
   
