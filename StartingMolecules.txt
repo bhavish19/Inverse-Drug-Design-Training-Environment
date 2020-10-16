@@ -1,0 +1,13 @@
+CC
+CCC
+CCCL
+CCCC
+C=N
+CC(C)Cl
+C=O
+C=C
+C=CC
+C=C(C)C
+C/C=C\C
+O=CO
+CCO
