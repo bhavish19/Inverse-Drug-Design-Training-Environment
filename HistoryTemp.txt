@@ -1,221 +1,66 @@
 Starting The Environment
-Starting Molecule C
+Starting Molecule CC
 Environment loop number : 1
 Reward For Previous Action 20
-Step 1
-Current State CCCCCCCCCCCO
-Reward For Previous Action 30
 Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
+Episode finished after 1 timesteps
+Starting Molecule CC
 Environment loop number : 2
 Reward For Previous Action 20
 Step 1
-Current State CCCCCCCCCCCO
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
 Reward For Previous Action 30
 Environment can't make anymore modifications to current state
 Episode finished after 2 timesteps
-Starting Molecule C
+Starting Molecule CC
 Environment loop number : 3
 Reward For Previous Action 20
 Step 1
-Current State CCCCCCCCCCCO
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
 Reward For Previous Action 30
 Environment can't make anymore modifications to current state
 Episode finished after 2 timesteps
-Starting Molecule C
+Starting Molecule CC
 Environment loop number : 4
 Reward For Previous Action 20
 Step 1
-Current State CCCCCCCCCCCCCCCCO
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
 Reward For Previous Action 30
-Step 2
-Current State CCCCCCCCCCCCCCCCCCO
-Reward For Previous Action 40
 Environment can't make anymore modifications to current state
-Episode finished after 3 timesteps
-Starting Molecule C
+Episode finished after 2 timesteps
+Starting Molecule CC
 Environment loop number : 5
 Reward For Previous Action 20
 Step 1
-Current State CCCCCCCC
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
 Reward For Previous Action 30
 Environment can't make anymore modifications to current state
 Episode finished after 2 timesteps
-Starting Molecule C
+Starting Molecule CC
 Environment loop number : 6
 Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
 Environment can't make anymore modifications to current state
-Episode finished after 1 timesteps
-Starting Molecule C
+Episode finished after 2 timesteps
+Starting Molecule CC
 Environment loop number : 7
 Reward For Previous Action 20
-Step 1
-Current State CCCCCCCCCCCO
-Reward For Previous Action 30
 Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
+Episode finished after 1 timesteps
+Starting Molecule CC
 Environment loop number : 8
 Reward For Previous Action 20
-Step 1
-Current State CCC(=O)O
-Reward For Previous Action 30
-Step 2
-Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
-Reward For Previous Action 40
 Environment can't make anymore modifications to current state
-Episode finished after 3 timesteps
-Starting Molecule C
+Episode finished after 1 timesteps
+Starting Molecule CC
 Environment loop number : 9
 Reward For Previous Action 20
-Step 1
-Current State CCCC1CCCCCC1
-Reward For Previous Action 30
-Step 2
-Current State CCCC1CCCCC(=O)C1
-Reward For Previous Action 40
 Environment can't make anymore modifications to current state
-Episode finished after 3 timesteps
-Starting Molecule C
+Episode finished after 1 timesteps
+Starting Molecule CC
 Environment loop number : 10
 Reward For Previous Action 20
-Step 1
-Current State C=C(C)C(C)C
-Reward For Previous Action 30
-Step 2
-Current State C=C(C(C)C)C1CCCCC1
-Reward For Previous Action 40
-Environment can't make anymore modifications to current state
-Episode finished after 3 timesteps
-Starting Molecule C
-Environment loop number : 11
-Reward For Previous Action 20
-Step 1
-Current State CCC(=O)O
-Reward For Previous Action 30
-Step 2
-Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
-Reward For Previous Action 40
-Environment can't make anymore modifications to current state
-Episode finished after 3 timesteps
-Starting Molecule C
-Environment loop number : 12
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCCCCCCCCCCCCCO
-Reward For Previous Action 30
-Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
-Environment loop number : 13
-Reward For Previous Action 20
-Step 1
-Current State CCCl
-Reward For Previous Action 30
-Step 2
-Current State CCClC
-Reward For Previous Action 40
-Environment can't make anymore modifications to current state
-Episode finished after 3 timesteps
-Starting Molecule C
-Environment loop number : 14
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCC
-Reward For Previous Action 30
-Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
-Environment loop number : 15
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCO
-Reward For Previous Action 30
-Step 2
-Current State CCCCCCCCCCCO
-Reward For Previous Action 40
-Environment can't make anymore modifications to current state
-Episode finished after 3 timesteps
-Starting Molecule C
-Environment loop number : 16
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCCCCCCCCCCCO
-Reward For Previous Action 30
-Step 2
-Current State CCCCCCCCCCCCCCCCCCO
-Reward For Previous Action 40
-Environment can't make anymore modifications to current state
-Episode finished after 3 timesteps
-Starting Molecule C
-Environment loop number : 17
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCC
-Reward For Previous Action 30
-Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
-Environment loop number : 18
-Reward For Previous Action 20
 Environment can't make anymore modifications to current state
 Episode finished after 1 timesteps
-Starting Molecule C
-Environment loop number : 19
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCC
-Reward For Previous Action 30
-Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
-Environment loop number : 20
-Reward For Previous Action 20
-Environment can't make anymore modifications to current state
-Episode finished after 1 timesteps
-Starting Molecule C
-Environment loop number : 21
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCCC
-Reward For Previous Action 30
-Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
-Environment loop number : 22
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCCCCCCO
-Reward For Previous Action 30
-Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
-Environment loop number : 23
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCCCCCCO
-Reward For Previous Action 30
-Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
-Environment loop number : 24
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCC
-Reward For Previous Action 30
-Environment can't make anymore modifications to current state
-Episode finished after 2 timesteps
-Starting Molecule C
-Environment loop number : 25
-Reward For Previous Action 20
-Step 1
-Current State CCCCCCCCCCCCCCCCO
-Reward For Previous Action 30
-Step 2
-Current State CCCCCCCCCCCCCCCCCCO
-Reward For Previous Action 40
-Environment can't make anymore modifications to current state
-Episode finished after 3 timesteps
-Starting Molecule C
-Environment loop number : 26
