@@ -41,6 +41,7 @@ startingMoleculeFileUploaded = False
 startingMoleculeFileName = ""
 EnvLoops = None
 StepsPerEnvLoop = None
+renderer = None
 
 
 class backgroundTab(Screen):
@@ -182,7 +183,13 @@ class backgroundTab(Screen):
             else:
                 file = open(startingMoleculeFileName)
                 for lines in file.readlines():
-                    startingMoleculeList.append(lines.strip("\n"))
+                    try :
+                        if Chem.MolFromSmiles(lines.strip("\n")):
+                            startingMoleculeList.append(lines.strip("\n"))
+                        else:
+                            print("Invalid Starting Molecule")
+                    except:
+                        pass
                 file.close()
         else:
             TempStartingMolecule = self.inputForStartingMolecule.text
@@ -283,6 +290,11 @@ class backgroundTab(Screen):
         self.lblEnvironmentLoop.disabled= True 
         self.lblPerEnvironmentLoop.disabled= True 
 
+        #For Optimization
+        if not render:
+            renderer.cancel()
+            infoUpdate=Clock.schedule_interval(self.updateInfo, 0.5)
+
         #Starts the Environment in parallel to GUI thread
         self.environmentStepCaller()
 
@@ -357,6 +369,7 @@ class backgroundTab(Screen):
             #Getting Starting Molecule by reseting Enviroment
             observation.append(env.reset())
             history="Starting Molecule " +str(Chem.MolToSmiles(env.currentState)) + "\n"
+            history+="Environment loop number : "+str(i_episode+1)+"\n"
             try:
                 f=open("HistoryTemp.txt", "a")
                 f.write(history)
@@ -381,7 +394,7 @@ class backgroundTab(Screen):
                 history+="Reward For Previous Action " +str(reward) + "\n"
                 
                 #CAN BE CHANGED TO SPEED UP SYSTEM OR TO BE SLOWED DOWN FOR ANALYSIS
-                time.sleep(0.5)
+                time.sleep(1)
 
                 if render:
                     env.render()
@@ -476,6 +489,16 @@ class backgroundTab(Screen):
             f.close()
         except:
             pass
+    
+    def setRenderer(self,Renderer):
+        """
+        Sets global renderer by getting from argument
+
+        Args:
+            Renderer (kivy.Clock): Clock for updating GUI for Rendering
+        """        
+        global renderer
+        renderer = Renderer
 
     def environmentHistory(self):
         """
@@ -511,7 +534,8 @@ class background(App):
         kv = Builder.load_file("background.kv")
         GUI = backgroundTab()
         GUI.createHistory()
-        Clock.schedule_interval(GUI.updateRender, 0.5)
+        Renderer=Clock.schedule_interval(GUI.updateRender, 0.5)
+        GUI.setRenderer(Renderer)
         return  GUI
     
     

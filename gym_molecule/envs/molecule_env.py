@@ -40,12 +40,16 @@ class MoleculeEnvironment(gym.Env):
             random.choice(startingMoleculeList))
         # Reading Action Space File and Creating List of it
         self.reactionsList = []     
-           
+  
         with open(actionSpaceFile) as f:
             mylist = [line.rstrip('\n') for line in f]
-        for line in mylist:
-            reaction = rdChemReactions.ReactionFromSmarts(line.strip())
-            self.reactionsList.append(reaction)
+        try:
+            for line in mylist:
+                reaction = rdChemReactions.ReactionFromSmarts(line.strip())
+                self.reactionsList.append(reaction)
+        except:
+            print("Error in one of the Reactions")
+
 
 
     def step(self, action):
