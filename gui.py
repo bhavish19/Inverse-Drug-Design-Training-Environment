@@ -521,7 +521,7 @@ class backgroundTab(Screen):
             tempWindow.destroy()
 
     
-class background(App):  
+class TEDD(App):  
     def build(self):
         """
         Builds The GUI
@@ -550,7 +550,7 @@ def forceExit(text):
 
 
 if __name__ == '__main__': 
-    background().run()
+    TEDD().run()
     #On force Exit Calls forceExit Function to terminate Threads that are running on background
     atexit.register(forceExit,"exit")
     #For MultiThreading
