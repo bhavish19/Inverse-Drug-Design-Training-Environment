@@ -1,0 +1,568 @@
+Starting The Environment
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCC
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCClCl
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCClCl
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State C=NCc1ccccc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCC
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State C=NCc1ccccc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCClC
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State C=NCc1ccccc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCClC
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCClCl
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCC
+Reward For Previous Action 30
+Step 2
+Current State CCCCCCCC
+Reward For Previous Action 40
+Environment can't make anymore modifications to current state
+Episode finished after 3 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCClC
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State C=NCc1ccccc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCClCl
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCC
+Reward For Previous Action 30
+Step 2
+Current State CCCC1CCCCCC1
+Reward For Previous Action 40
+Step 3
+Current State CCCC1CCCCC(=O)C1
+Reward For Previous Action 50
+Environment can't make anymore modifications to current state
+Episode finished after 4 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCC1CC1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCClCl
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCC
+Reward For Previous Action 30
+Step 2
+Current State CCCC1CCCCCC1
+Reward For Previous Action 40
+Step 3
+Current State CCCC1CCCCC(=O)C1
+Reward For Previous Action 50
+Environment can't make anymore modifications to current state
+Episode finished after 4 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCC1CC1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State C=NCc1ccccc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State C=C(C)C(C)C
+Reward For Previous Action 30
+Step 2
+Current State C=C(C(C)C)C1CCCCC1
+Reward For Previous Action 40
+Environment can't make anymore modifications to current state
+Episode finished after 3 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State C=NCc1ccccc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC(C)Cc1ccc([C@@H](C)C(=O)O)cc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State C=NCc1ccccc1
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCClCl
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CCCCCCCCCCCCCCCCCCO
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Step 1
+Current State CC=C(C)CCC=C(C)CCC=C(C)C
+Reward For Previous Action 30
+Environment can't make anymore modifications to current state
+Episode finished after 2 timesteps
+Starting Molecule CC
+Reward For Previous Action 20
+Environment can't make anymore modifications to current state
+Episode finished after 1 timesteps
+Starting Molecule CC

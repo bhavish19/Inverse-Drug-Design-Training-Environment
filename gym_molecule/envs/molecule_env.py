@@ -1,239 +1,249 @@
+#Importing Libraries
 import gym
 from gym import error, spaces, utils
 from gym.utils import seeding
 from rdkit import Chem
-from rdkit.Chem import Draw
-from PIL import Image
-import time
+import networkx as nx
 import random
-import csv
-import itertools
 from multiprocessing import Pool
 import multiprocessing as mp
-#from numba import jit, cuda
+from rdkit.Chem import rdChemReactions
+import time
+from rdkit.Chem import Draw
+from tkinter import Tk 
+from tkinter import messagebox
+
+# Creating global reward
+reward = float(0)
 
 
 class MoleculeEnvironment(gym.Env):
+
+    # Initilazer
     def __init__(self):
         super().__init__()
-        self.currentState = Chem.MolFromSmiles('CCl')
-        self.targetState = Chem.MolFromSmiles('CCO')
 
-    def molToString(self, molecule):
-        temp = ""
-        for a in molecule.GetAtoms():
-            temp += a.GetSymbol()
-        return temp
 
-    def molToList(self, molecule):
-        temp = []
-        for a in molecule.GetAtoms():
-            temp.append(a.GetSymbol())
-        return temp
+    def init(self, startingMoleculeList, actionSpaceFile):
+        """
+        Initilazing The Environment
 
-    def calculateAtomnumbers(self, molecule):
-        toReturn = []
-        moleculeTemp = self.molToList(molecule)
-        symbolList = []
-        numberOfAtomsList = []
-        k = 0
-        while(moleculeTemp):
-            moleculeTemp2 = []
-            moleculeTemp2 = moleculeTemp.copy()
-            moleculeCheck = moleculeTemp[0]
-            count = 0
-            for i in moleculeTemp:
-                if(moleculeCheck == i):
-                    count += 1
-                    moleculeTemp2.remove(i)
-            toReturn.append([])
-            toReturn[k].append(moleculeCheck)
-            toReturn[k].append(count)
-            k += 1
-            moleculeTemp = moleculeTemp2
-        return toReturn
+        Args:
+            startingMoleculeList (list): List of Starting Molecules
+            actionSpaceFile (str): Action Space File Path
+        """
+        # For parallelThreadization and GUI
+        mp.freeze_support()
+        self.startingMoleculeList = startingMoleculeList
+        # Choosing Random Molecule From List and Making it Current State to define currentState
+        self.currentState = Chem.MolFromSmiles(
+            random.choice(startingMoleculeList))
+        # Reading Action Space File and Creating List of it
+        self.reactionsList = []     
+           
+        with open(actionSpaceFile) as f:
+            mylist = [line.rstrip('\n') for line in f]
+        for line in mylist:
+            reaction = rdChemReactions.ReactionFromSmarts(line.strip())
+            self.reactionsList.append(reaction)
 
-    def differenceBetweenMols(self, currentMol, targetMol):
-        current = self.calculateAtomnumbers(currentMol)
-        target = self.calculateAtomnumbers(targetMol)
-        symbolList = []
-        numberOfAtomsList = []
-        eq = []
-        for i in target:
-            flag = False
-            for j in current:
-                if (i[0] == j[0]):
-                    eq.append(current.index(j))
-                    if(i[1] != j[1]):
-                        symbolList.append(i[0])
-                        temp = i[1] - j[1]
-                        numberOfAtomsList.append(temp)
-                        flag = True
-                        break
-            if(flag == False):
-                symbolList.append(i[0])
-                numberOfAtomsList.append(i[1])
-        for i in range(len(current)):
-            if i not in eq:
-                symbolList.append(current[i][0])
-                numberOfAtomsList.append(-current[i][1])
-        toReturn = []
-        for k in range(len(symbolList)):
-            toReturn.append([])
-            toReturn[k].append(symbolList[k])
-            toReturn[k].append(numberOfAtomsList[k])
-        return toReturn
 
-    def combinationsForParallel(self, start, list):
-        toReturn = []
-        nextMolecule = self.currentStringState + start
-        nextValidMolecule = Chem.MolFromSmiles(nextMolecule)
-        if nextValidMolecule and not self.currentStringState == nextMolecule:
-            toReturn.append(nextMolecule)
-        if not list:
-            return toReturn
-        temp = ""
-        count = 0
-        for atom, numbers in list:
-            if numbers == 1:
-                tempList = list.copy()
-                del tempList[count]
-                start2 = start + atom
-                temp2 = self.combinationsForParallel(start2, tempList)
-                if temp2:
-                    for t in temp2:
-                        if t not in toReturn:
-                            toReturn.append(t)
-            elif numbers > 1:
-                tempList = list.copy()
-                tempList[count][1] -= 1
-                self.combinationsForParallel(start, tempList)
-                start2 = start + atom
-                temp2 = self.combinationsForParallel(start2, tempList)
-                if temp2:
-                    for t in temp2:
-                        if t not in toReturn:
-                            toReturn.append(temp2)
-            count += 1
-        return toReturn
+    def step(self, action):
+        """
+        Step Method that takes steps (Makes Changes) in environment
 
-    def combinations(self, list):
-        pool = mp.Pool(mp.cpu_count())
-        starters = []
-        temp = ""
-        starters.append(temp)
-        count = 0
-        index = 0
-        for atom, number in list:
-            if 'C' == atom:
-                index = count
-                for i in range(number):
-                    temp += 'C'
-                    starters.append(temp)
-            count += 1
-        tempList = list.copy()
-        del tempList[index]
-        results = pool.starmap(self.combinationsForParallel, [
-                               (row, tempList) for row in starters])
-        pool.close()
-        return results
+        Args:
+            action (networkx.Graph()): Action That Will be Applied to currentState
 
-    def allValidMolecules(self, atomsList):
-        toReturn = []
-        atomsPlus = []
-        atomsMinus = []
-        for i in atomsList:
-            if(i[1] > 0):
-                atomsPlus.append(i)
-        for i in atomsList:
-            if(i[1] < 0):
-                atomsMinus.append(i)
-        p = Pool(4)
-        times = range(0, len(atomsPlus)+1)
-        values = p.map(self.nLengthCombination(times, atomsPlus))
+        Returns:
+            tuple: observations, reward, Done; Returns observations for next State, Reward for Agents Chosen Action, 
+            Done is True if No more Modifications can be made
+        """
+        validModifications = []
+        
+        #Changes Current State
+        self.take_action(action)
+        Done = False
 
-        p.close()
-        return toReturn
+        #Iterates Through reactionList(ActionSpace) and Checks if any Reactants Match to currentState
+        #If they Match Checks Products if they are Chemically Valid
+        #If they Are Chemically valid adds them to validModifications (list) 
+        for reactions in self.reactionsList:
+            for reactant in range(reactions.GetNumReactantTemplates()):
+                if Chem.MolToSmiles(reactions.GetReactantTemplate(reactant)) == Chem.MolToSmiles(self.currentState):
+                    for i in range(reactions.GetNumProductTemplates()):
+                        product = reactions.GetProductTemplate(i)
+                        if product:
+                            validModifications.append(product)
 
-    def step(self, nextState, zeroStep):
-        self.observations = []
-       # file = open('delaney.csv')
-       # csv_reader = csv.reader(file, delimiter=",")
-       # next(csv_reader, None)
-       # rows = list(csv_reader)
-       # for i in range(30):
-       #     r = random.randint(1, 120)
-       #     row = rows[r]
-       #     smiles = row[-1]
-       #     self.render(smiles)
-       #     time.sleep(0)
+        #Environment can't make any modifications to current State"
+        if(len(validModifications) == 0):            
+            Done = True
 
-        #m1 = Chem.MolFromSmiles("C")
-        # for i in range (0,10):
-        #   smiles = self.randomSmiles(m1)
-        #  self.render(smiles)
+        #Works only when used without GUI
+        #Created Molecular Graphs of Molecules in parallelThread
+        #p = mp.Pool(mp.cpu_count())
+        #observations = p.map(self.moltoGraph, validModifications)
+        #p.close
 
-        modifications = 0  # List for later
+        #Converts Valid Modifications from validModifications (list) to Moleculer Graphs and adds them to observations (list)
+        observations = []
+        for i in validModifications:
+            observations.append(self.moltoGraph(i))
 
-        reward = 10  # for now Out Of Scope
-        # self.stateReward += reward  # for now Out Of Scope
-        #self.currentState = nextState
-        self.currentState = Chem.MolFromSmiles('C')
-        self.targetState = Chem.MolFromSmiles('OCC(O)CC(O)[C@@H]1C[C@@H]2O[C@@]3(C[C@H](C)[C@@H]2O1)C[C@H](C)[C@@H]4O[C@]%10(C[C@@H]4O3)C[C@H]%11O[C@H]%12[C@H](C)[C@H]%13OC(=O)C[C@H]8CC[C@@H]9O[C@H]7[C@H]6O[C@]5(O[C@H]([C@@H]7O[C@@H]6C5)[C@H]9O8)CC[C@H]%15C/C(=C)[C@H](CC[C@H]%14C[C@@H](C)\C(=C)[C@@H](C[C@@H]%13O[C@H]%12C[C@H]%11O%10)O%14)O%15')
-        self.currentStringState = self.molToString(self.currentState)
-        atomsList = self.differenceBetweenMols(
-            self.currentState, self.targetState)
-        validMolecules = self.combinations(atomsList)
-        validMolecules = list(itertools.chain.from_iterable(validMolecules))
-        validMolecules2 = []
-        for i in validMolecules:
-            if not isinstance(i, str):
-                for j in i:
-                    if j not in validMolecules2:
-                        validMolecules2.append(j)
-            else:
-                if i not in validMolecules2:
-                    validMolecules2.append(i)
-        validMolecules2.sort()
-        for i in validMolecules2:
-            print(i)
-        molecules = 0
-        modifications = molecules + reward  # List for later
-        return modifications
+        #Creating tuple to return
+        tuple = (observations, self.reward(), Done)
+        return tuple
+
 
     def reset(self):
-        self.currentState = Chem.MolFromSmiles('C')
-        print("Called reset function")
+        """
+        Reseting Environment to the Beginning
 
-    def render(self, smiles):
-        mol = Chem.MolFromSmiles(smiles)
-        Draw.MolToFile(mol, "molecule.png")
-        img = Image.open('molecule.png')
-        img.show()
-        img.close()
-        #img =open('molecule.png','rb').read()
+        Returns:
+            [networkx.Graph()]: currentState in Molecule Graph Format
+        """
+        global reward
+        #Reset Reward
+        reward = 0
+        #Select Molecule Random from startingMoleculeList (list) and make it currentState
+        tempMol= Chem.MolFromSmiles(random.choice(self.startingMoleculeList))
+        count = 0
+        while not tempMol or count > 20:
+            tempMol= Chem.MolFromSmiles(random.choice(self.startingMoleculeList))
+            count+=1
+        if count>20:
+            tempWindow = Tk()
+            tempWindow.withdraw()
+            messagebox.showinfo("Warning", "Please upload Proper Action List")
+            tempWindow.destroy()
+            exit()
+
+        self.currentState = tempMol
+        return self.moltoGraph(self.currentState)
+
+
+    def render(self):
+        """
+        Renders CurrentState and saves it as RenderingImage.png to System Folder for GUI to catch
+        """
+        try:
+            Chem.Draw.MolToFile(self.currentState, "RenderingImage.png")
+        except:
+            pass
+
 
     def seed(self):
+        """
+        FOR USER TO IMPLEMENT
+        Not Implemented
+
+        Raises:
+            NotImplementedError:
+        """
         raise NotImplementedError
 
-    def agent(self):
-        self.targetState = Chem.MolFromSmiles('nccccc')
-        flag = True
-        self.stateReward = 0
-        nextState = Chem.MolFromSmiles('C')
-        modifications = step(self, nextState, True)
-        while(flag):
-            # Find Next State Here from modifications
-            modifications = step(self, nextState, False)
+ 
+    def reward(self):
+        """
+        Dummy Rewarding System
+        THIS METHOD IS FOR USER TO IMPLEMENT REWARDING SYSTEM
 
-    def getCurrentState(self):
-        return self.currentState
+        Returns:
+            [float]: Reward
+        """        
+        global reward
+        #Adds 10 points no matter what action is chosen by Agent
+        reward +=10
+        return reward
 
-    def setCurrentState(self, state):
-        self.currentState = state
 
-    def getStateReward(self):
-        return self.stateReward
+    def take_action(self, action):
+        """Takes action to Modify currentState
 
-    def setStateReward(self, reward):
-        self.stateReward = reward
+        Args:
+            action (networkx.Graph()): Action That Will be Applied to currentState
+        """        
+        self.currentState = self.graphToMol(action)
+
+    """
+    Out Of Scope
+    Converting Molecules to Molecular Graph using networkx library
+    For Methods moltoGraph(mol), graphToMol(molGraph)
+    Please Check the Referece Github For This Code
+    https://github.com/dakoner/keras-molecules/tree/dbbb790e74e406faa70b13e8be8104d9e938eba2
+    Might Be Modified to corporate the methods with this Project
+    When Creating the Graph or Creating Molecule from Graph
+    Doesnt Take into Account Protonation State, ...
+    Also Some Bond Types Triple, Dative, ...
+    This methods can easily be extended if needed
+    |  |  |  |  |  |  |  |   |  |  |  |  |  |  |  |
+    \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+    """
+    def moltoGraph(self, mol):
+        """
+        Converts Molecule to Moleculer Graph
+
+        Args:
+            mol (Chem.mol): Molecule in Rdkit chem library
+
+        Returns:
+            networkx.Graph(): Molecular Graph that has been converted from Molecule
+        """
+        molGraph = nx.Graph()
+
+        for atom in mol.GetAtoms():
+            molGraph.add_node(atom.GetIdx(),
+                              atomic_num=atom.GetAtomicNum(),
+                              formal_charge=atom.GetFormalCharge(),
+                              chiral_tag=atom.GetChiralTag(),
+                              hybridization=atom.GetHybridization(),
+                              num_explicit_hs=atom.GetNumExplicitHs(),
+                              is_aromatic=atom.GetIsAromatic())
+        for bond in mol.GetBonds():
+            molGraph.add_edge(bond.GetBeginAtomIdx(),
+                              bond.GetEndAtomIdx(),
+                              bond_type=bond.GetBondType())
+        return molGraph
+
+    def graphToMol(self, molGraph):
+        """
+        Converts Moleculer Graph to Molecule
+
+        Args:
+            molGraph (networkx.Graph()): Molecular Graph
+
+        Returns:
+            [Chem.mol]: Molecule in Rdkit chem library that is converted back from molecular graph
+        """
+        mol = Chem.RWMol()
+        atomic_nums = nx.get_node_attributes(molGraph, 'atomic_num')
+        chiral_tags = nx.get_node_attributes(molGraph, 'chiral_tag')
+        formal_charges = nx.get_node_attributes(molGraph, 'formal_charge')
+        node_is_aromatics = nx.get_node_attributes(molGraph, 'is_aromatic')
+        node_hybridizations = nx.get_node_attributes(molGraph, 'hybridization')
+        num_explicit_hss = nx.get_node_attributes(molGraph, 'num_explicit_hs')
+        node_to_idx = {}
+        for node in molGraph.nodes():
+            a = Chem.Atom(atomic_nums[node])
+            a.SetChiralTag(chiral_tags[node])
+            a.SetFormalCharge(formal_charges[node])
+            a.SetIsAromatic(node_is_aromatics[node])
+            a.SetHybridization(node_hybridizations[node])
+            a.SetNumExplicitHs(num_explicit_hss[node])
+            idx = mol.AddAtom(a)
+            node_to_idx[node] = idx
+
+        bond_types = nx.get_edge_attributes(molGraph, 'bond_type')
+        for edge in molGraph.edges():
+            first, second = edge
+            ifirst = node_to_idx[first]
+            isecond = node_to_idx[second]
+            bond_type = bond_types[first, second]
+            mol.AddBond(ifirst, isecond, bond_type)
+        try:
+            Chem.SanitizeMol(mol)
+        except:
+            pass
+
+        return mol

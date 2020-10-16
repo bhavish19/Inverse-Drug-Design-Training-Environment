@@ -1,9 +1,27 @@
 
 <backgroundTab>:
     name : "FirstWindow"
-    buttonActionSpace:buttonActionSpace
+    buttonStart:buttonStart
+    inputForStartingMolecule:inputForStartingMolecule
     buttonStartingMolecule:buttonStartingMolecule
-    input2:input2
+    buttonActionSpace:buttonActionSpace
+    spinnerRendering:spinnerRendering
+    spinnerStartingMolecule:spinnerStartingMolecule
+    spinnerActionSpace:spinnerActionSpace
+    lblStartingMolecule:lblStartingMolecule
+    lblActionSpace:lblActionSpace
+    lblRendering:lblRendering
+    outInfo:outInfo
+    outSettings:outSettings
+    buttonRenderContinue:buttonRenderContinue
+    buttonReset:buttonReset
+    buttonHistory:buttonHistory
+    imageMol:imageMol
+    inputEnvLoopStep:inputEnvLoopStep
+    inputEnvLoop:inputEnvLoop
+    lblEnvironmentLoop:lblEnvironmentLoop
+    lblPerEnvironmentLoop:lblPerEnvironmentLoop
+
     FloatLayout:
         canvas: 
             Color:
@@ -37,15 +55,26 @@
             text: "Rendering : "
             pos: (-680,-30)
             font_size :'30sp'
+
+        Label:
+            id:lblEnvironmentLoop
+            text: "Number of Times Environment Loops :"
+            pos: (-505,-160)
+            font_size :'30sp'
+
+        Label:
+            id:lblPerEnvironmentLoop
+            text: "Number of Times Steps Per Environment Loops :"
+            pos: (-440,-290)
+            font_size :'30sp'
     
         Spinner:           
             id: spinnerActionSpace 
-            #on_text: root.spinner_clicked(spinner_id.text) 
             text: "Default"
             values: ["Default", "Upload Action Space"]
             size_hint: None, None
             size: 200, 50
-            pos: (350,605)
+            pos: (750,605)
             background_color: rgba("#CD5C5C")
             on_release: 	
                 self.background_color=rgba("#6495ED")
@@ -53,34 +82,35 @@
 
         Spinner:           
             id: spinnerStartingMolecule 
-            #on_text: root.spinner_clicked(spinner_id.text) 
             text: "Carbon"
             values: ["Carbon", "Random Molecule from List", "Certain Molecule"]
             size_hint: None, None
             size: 200, 50
-            pos: (350,475)
+            pos: (750,475)
             background_color: rgba("#CD5C5C")
             on_release: 	
                 self.background_color=rgba("#6495ED") 
-            on_text: root.spinnerStartingMolecule(self.text)
+            on_text: root.spinnerStartingMol(self.text)
 
         Spinner:           
             id: spinnerRendering 
-            #on_text: root.spinner_clicked(spinner_id.text) 
             text: "No Rendering"
-            values: ["No Rendering", "2D Rendering", "3D Rendering"]
+            values: ["No Rendering", "2D Rendering"]
             size_hint: None, None
             size: 200, 50
-            pos: (350,345)
+            pos: (750,345)
             background_color: rgba("#CD5C5C")
             on_release: 	
                 self.background_color=rgba("#6495ED") 
+            on_text: root.spinnerRenderingChange(self.text)
+
+
         Button:
             id: buttonActionSpace
             text: "Upload File"
             size_hint: None, None
             size: 200, 50
-            pos: (600,605)
+            pos: (1000,605)
             background_color: rgba("#CD5C5C")
             opacity: 0
             disabled: True
@@ -93,7 +123,7 @@
             text: "Upload File"
             size_hint: None, None
             size: 200, 50
-            pos: (600,475)
+            pos: (1000,475)
             opacity: 0
             disabled: True
             background_color: rgba("#CD5C5C")
@@ -104,13 +134,13 @@
 
         Widget:
             TextInput: 
-                id: input2
+                id: inputForStartingMolecule
                 hint_text:'Enter Starting Molecule'
                 size_hint: (None,None)
                 pos_hint:(None,None)
-                pos: (600,475)            
+                pos: (1000,475)            
                 height: 50
-                width: 245
+                width: 280
                 font_size: 22
                 multiline: False
                 opacity: 0
@@ -123,19 +153,117 @@
             text: "Create The Environment"
             size_hint: None, None
             size: 200, 50
-            pos: (1360,80)
+            pos: (1360,90)
             background_color: rgba("#CD5C5C")
             on_press:
                 root.startEnvironment()
-                self.background_color=rgba("#6495ED")
 
         Button:
             id: buttonExit
             text: "Exit"
             size_hint: None, None
             size: 200, 50
-            pos: (1360,20)
+            pos: (1360,30)
             background_color: rgba("#CD5C5C")
             on_press:
                 root.exit()
                 self.background_color=rgba("#6495ED")
+
+        TextInput:
+            id:outInfo
+            background_color: (255, 255, 255, 0.7)
+            multiline: True
+            text:"..."
+            readonly: True 
+            size_hint: (None, None)
+            size: 1100, 350
+            pos: (10,330)
+            opacity:0
+            disabled:True
+
+        TextInput:
+            id:outSettings
+            background_color: (255, 255, 255, 0.7)
+            multiline: True
+            text:"..."
+            readonly: True 
+            size_hint: (None, None)
+            size: 475, 350
+            pos: (1115,330)
+            opacity:0
+            disabled:True
+
+
+        Button:            
+            id: buttonRenderContinue
+            text: "Stop Rendering"
+            size_hint: None, None
+            size: 200, 50
+            pos: (1360,210)
+            background_color: rgba("#CD5C5C")
+            opacity:0
+            disabled:True
+            on_press:
+                root.buttonRenderContinueClicked() if self.text == "Start Rendering" else root.buttonRenderStopClicked()
+
+        Button:            
+            id: buttonReset
+            text: "Reset Environment"
+            size_hint: None, None
+            size: 200, 50
+            pos: (1360,150)
+            background_color: rgba("#CD5C5C")
+            opacity:0
+            disabled:True
+            on_press:
+                root.resetEnvironment()
+        
+        Button:            
+            id: buttonHistory
+            text: "Get Environment History"
+            size_hint: None, None
+            size: 200, 50
+            pos: (400,90)
+            background_color: rgba("#CD5C5C")
+            opacity:0
+            disabled:True
+            on_press:
+                root.environmentHistory()
+        
+        Image:
+            id: imageMol
+            source: "BackGroundImage.jpg"
+            background_color: (255, 255, 255, 0.8)
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: None, None
+            size: 800, 310
+            opacity:0
+            disabled:True
+            pos: (200,10)
+
+        Widget:
+            TextInput:           
+                id: inputEnvLoop
+                hint_text:'Enter Number'
+                size_hint: (None,None)
+                pos_hint:(None,None)
+                pos: (750,215)            
+                height: 50
+                width: 200
+                font_size: 22
+                multiline: False
+                padding_y : 12
+
+            TextInput:           
+                id: inputEnvLoopStep
+                hint_text:'Enter Number'
+                size_hint: (None,None)
+                pos_hint:(None,None)
+                pos: (750,85)            
+                height: 50
+                width: 200
+                font_size: 22
+                multiline: False
+                padding_y : 12
+
